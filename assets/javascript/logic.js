@@ -17,12 +17,12 @@ var comics = [
 
 //function to render buttons to the screen
 function buttonRender() {
-  $("#buttons-div").empty();
+  $("#button-div").empty();
   for (let i = 0; i < comics.length; i++) {
     // this creates the button
     var comicButton = $("<button>");
     //add class
-    comicButton.addClass("comic");
+    comicButton.addClass("comic-Button");
     // add a data atrribute
     comicButton.attr("data-name", comics[i]);
     // addthe text to the button
@@ -32,5 +32,17 @@ function buttonRender() {
     console.log("this worked");
   }
 }
+
+//function to add movies from the add a comic input
+$("#add-comic").on("click", function(event) {
+  event.preventDefault();
+  var comicAdded = $("#comic-input")
+    .val()
+    .trim();
+  console.log(comicAdded);
+
+  comics.push(comicAdded);
+  buttonRender();
+});
 
 buttonRender();
