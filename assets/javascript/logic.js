@@ -15,6 +15,19 @@ var comics = [
 
 // API key = SUWUn7pu7DH4gN2K703g1V4ypRPO4O29
 
+// function to query the GIHpy API
+// $(".comic-Button").on("click", function() {
+//   var c = $(this).data("name");
+//   var queryURL =
+//     "https://api.giphy.com/v1/gifs/search?q=" +
+//     c +
+//     "&api_key=SUWUn7pu7DH4gN2K703g1V4ypRPO4O29&limit=10";
+
+//   $.ajax({ url: queryURL, method: "GET" }).then(function(response) {
+//     console.log(response);
+//   });
+// });
+
 //function to render buttons to the screen
 function buttonRender() {
   $("#button-div").empty();
@@ -43,6 +56,19 @@ $("#add-comic").on("click", function(event) {
 
   comics.push(comicAdded);
   buttonRender();
+});
+
+$(document).on("click", ".comic-Button", function() {
+  var c = $(this).data("name");
+  var queryURL =
+    "https://api.giphy.com/v1/gifs/search?q=" +
+    c +
+    "&api_key=SUWUn7pu7DH4gN2K703g1V4ypRPO4O29&limit=10";
+
+  $.ajax({ url: queryURL, method: "GET" }).then(function(response) {
+    console.log(queryURL);
+    console.log(response);
+  });
 });
 
 buttonRender();
