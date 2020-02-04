@@ -59,6 +59,7 @@ $("#add-comic").on("click", function(event) {
 });
 
 $(document).on("click", ".comic-Button", function() {
+  $("#Gif-div").empty();
   var c = $(this).data("name");
   var queryURL =
     "https://api.giphy.com/v1/gifs/search?q=" +
@@ -68,6 +69,32 @@ $(document).on("click", ".comic-Button", function() {
   $.ajax({ url: queryURL, method: "GET" }).then(function(response) {
     console.log(queryURL);
     console.log(response);
+    var results = response.data;
+    // loop through the response array
+    for (let i = 0; i < results.length; i++) {
+      // create a div to hold the images
+      var comicDiv = $("<div>");
+
+      //create a <p> to hold the rating
+      var pRating = $("<p>").text("Rating: " + results[i].rating);
+      //variable for image to hold the image
+      var comicImg = $("<img>");
+      // add class for click event listener later
+      comicImg.addClass("comicGif");
+      // variable to hold still image
+      var comicStill = results[i].images.fixed_height_still.url;
+      // variable to hold moving image
+      var comicMoving = results[i].images.fixed_height.url;
+      // need to assign the attr or still and animate and data-state to the img
+      // assign attr of src still so the still img loads on the page
+      comicImg.attr("src", comicStill);
+      comicImg.attr("data-still", comicStill);
+      comicImg.attr("data-animate", comicMoving);
+      comicImg.attr("data-state", "still");
+      comicDiv.append(pRating);
+      comicDiv.append(comicImg);
+      $("#Gif-div").append(comicDiv);
+    }
   });
 });
 
