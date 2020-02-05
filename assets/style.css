@@ -1,3 +1,11 @@
+body {
+  background-color: lightgrey;
+}
+
+#button-div {
+  margin: 10px;
+}
+
 .comic-Button {
   background-color: darkgrey;
   border-radius: 25px;
@@ -5,8 +13,26 @@
   display: inline-block;
 }
 
-#Gif-div {
-  display: inline-block;
-  background-image: url
-    ("199-1992353_drawing-tv-outline-transparent-background-tv-clipart.png");
+#comic-form {
+  float: right;
+  width: 200px;
+  margin-right: 10px;
+  border-style: solid;
+  font-size: 16px;
+}
+
+#comic-input {
+  width: 180px;
+}
+
+#add-comic {
+  background-color: darkgrey;
+  border-radius: 25px;
+  font-size: 12px;
+}
+
+.flex-container {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
 }
