@@ -96,6 +96,18 @@ $(document).on("click", ".comic-Button", function() {
       $("#Gif-div").append(comicDiv);
     }
   });
+
+  // on click listener event for when a gif image is clicked
+  $(document).on("click", ".comicGif", function() {
+    var state = $(this).attr("data-state");
+    if (state === "still") {
+      $(this).attr("src", $(this).attr("data-animate"));
+      $(this).attr("data-state", "animate");
+    } else {
+      $(this).attr("src", $(this).attr("data-still"));
+      $(this).attr("data-state", "still");
+    }
+  });
 });
 
 buttonRender();
